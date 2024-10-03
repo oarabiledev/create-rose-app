@@ -1,44 +1,14 @@
-// Main Testing Script For roseview Features
+// Main App File
+import { HashRouter } from "roseview";
+import { createApp } from "roseview";
 
-import { html, htmlPage, cssParser } from 'roseview'
+import homePage from "./pages/main.js";
+import aboutPage from "./pages/about.js";
 
-let main = html.CreateLayout("index", "linear", "center, scrolly, fillxy");
-main.setChildMargins = "null, 15px";
+const routes = [
+    { path: "index", component: homePage },
+    { path: "about", component: aboutPage },
+];
+const router = HashRouter(routes);
 
-let customIn = cssParser({
-	"@keyframes fadeIn": {
-		"0%": { opacity: "0" },
-		"100%": { opacity: "1" }
-	},
-	animation: "fadeIn 1s ease forwards"
-});
-
-let customOut = cssParser({
-	"@keyframes fadeOut": {
-		"0%": { opacity: "0" },
-		"100%": { opacity: "1" }
-	},
-	animation: "fadeIn 1s ease forwards"
-});
-
-main.Transition = [customIn, customOut];
-
-let nav_title = html.Text(main, "HomePage 😋");
-nav_title.classes = "pacifico-regular";
-
-let loginBtn = html.Button(main, "About Page");
-loginBtn.on("click", () => {
-	htmlPage.Open("#about");
-});
-
-let login = html.CreateLayout("about", "linear", "center, scrolly, fillxy");
-login.setChildMargins = "15px, 15px, 15px";
-login.style({
-	backgroundColor: "yellow"
-});
-
-let txt = html.Text(login, "We Keep Pushing");
-txt.style({
-	fontSize: "50px",
-	wordWrap: "wrap"
-});
+window.app = createApp(main).use(router).mount("#app");
