@@ -2,7 +2,7 @@
 import { HashRouter } from "roseview";
 import { createApp } from "roseview";
 
-import homePage from "./pages/main.js";
+import homePage from "./pages/index.js";
 import aboutPage from "./pages/about.js";
 
 const routes = [
@@ -11,4 +11,4 @@ const routes = [
 ];
 const router = HashRouter(routes);
 
-window.app = createApp(main).use(router).mount("#app");
+window.app = createApp(homePage).use(router).mount("#app");

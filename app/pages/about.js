@@ -1,13 +1,8 @@
-import { html } from "roseview";
+import { CreateLayout } from "roseview";
+import TonalButton from "../components/tonalButton.js";
 
-import { outlinedButton } from "../components/outlinebtn.js";
+let aboutPage = CreateLayout("linear", "center, scrolly, fillxy");
 
-let aboutPage = html.CreateLayout("linear", "fillxy, center");
-aboutPage.setChildMargins = "null, 10px, null, 10px";
-
-let aboutButton = outlinedButton(aboutPage, "<- Go Back");
-aboutButton.on("click", function () {
-    app.router.back();
-});
+const btn = TonalButton(aboutPage, "About Page");
 
 export default aboutPage;
