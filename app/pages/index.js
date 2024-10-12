@@ -1,6 +1,6 @@
-import { CreateLayout, htmlElement } from "roseview";
+import { htmlLayout, htmlElement } from "roseview";
 
-let homePage = CreateLayout("linear", "center, scrolly, fillxy");
+let homePage = new htmlLayout("linear", "center, scrolly, fillxy");
 
 const div = new htmlElement(homePage, "button", {
     textContent: "Go To About",
